@@ -6,7 +6,7 @@ data class ComicsResponse(
     val copyright: String,
     val attributionText: String,
     val attributionHTML: String,
-    val data: DataContainer
+    val data: DataContainer,
 )
 
 data class DataContainer(
@@ -14,5 +14,5 @@ data class DataContainer(
     val limit: Int,
     val total: Int,
     val count: Int,
-    val results: List<ComicBook>
+    val results: List<ComicBook>,
 )

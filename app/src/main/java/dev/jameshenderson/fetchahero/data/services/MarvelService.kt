@@ -20,6 +20,6 @@ interface MarvelService {
         @Path("comicId") comicId: Int,
         @Query("ts") timestamp: String,
         @Query("hash") hash: String,
-        @Query("apikey") publicKey: String
+        @Query("apikey") publicKey: String,
     ): ComicsResponse
 }

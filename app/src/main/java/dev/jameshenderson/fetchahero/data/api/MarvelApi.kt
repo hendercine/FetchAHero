@@ -8,14 +8,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Date
 import javax.inject.Inject
 
-class MarvelApi @Inject constructor() {
-    private val gson = GsonBuilder()
-        .registerTypeAdapter(Date::class.java, DateDeserializer)
-        .create()
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://gateway.marvel.com/")
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
+class MarvelApi
+    @Inject
+    constructor() {
+        private val gson =
+            GsonBuilder()
+                .registerTypeAdapter(Date::class.java, DateDeserializer)
+                .create()
+        private val retrofit: Retrofit =
+            Retrofit
+                .Builder()
+                .baseUrl("https://gateway.marvel.com/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
 
-    val marvelService: MarvelService = retrofit.create(MarvelService::class.java)
-}
+        val marvelService: MarvelService = retrofit.create(MarvelService::class.java)
+    }
