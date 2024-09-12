@@ -1,6 +1,6 @@
 package dev.jameshenderson.fetchahero.data.models
 
-data class ComicsResponse(
+data class HeroesResponse(
     val code: Int,
     val status: String,
     val copyright: String,
@@ -14,5 +14,5 @@ data class DataContainer(
     val limit: Int,
     val total: Int,
     val count: Int,
-    val results: List<ComicBook>,
+    val results: List<Hero>,
 )

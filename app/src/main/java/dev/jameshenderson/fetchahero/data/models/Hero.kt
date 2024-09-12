@@ -2,14 +2,14 @@ package dev.jameshenderson.fetchahero.data.models
 
 import java.util.Date
 
-data class ComicBook(
+data class Hero(
     val id: Int? = null,
     val digitalId: Int? = null,
     val title: String? = null,
     val issueNumber: Double? = null,
     val variantDescription: String? = null,
     val description: String? = null,
-    val modified: ComicDate? = null,
+    val modified: HeroDate? = null,
     val isbn: String? = null,
     val upc: String? = null,
     val diamondCode: String? = null,
@@ -21,13 +21,13 @@ data class ComicBook(
     val resourceURI: String? = null,
     val urls: List<Url>? = null,
     val series: SeriesSummary? = null,
-    val variants: List<ComicSummary>? = null,
-    val collections: List<ComicSummary>? = null,
-    val collectedIssues: List<ComicSummary>? = null,
-    val dates: List<ComicDate>? = null,
-    val prices: List<ComicPrice>? = null,
-    val thumbnail: ComicBookImage? = null,
-    val images: List<ComicBookImage>? = null,
+    val variants: List<HeroSummary>? = null,
+    val collections: List<HeroSummary>? = null,
+    val collectedIssues: List<HeroSummary>? = null,
+    val dates: List<HeroDate>? = null,
+    val prices: List<HeroPrice>? = null,
+    val thumbnail: HeroImage? = null,
+    val images: List<HeroImage>? = null,
     val creators: CreatorList? = null,
     val characters: CharacterList? = null,
     val stories: StoryList? = null,
@@ -50,22 +50,22 @@ data class SeriesSummary(
     val name: String? = null,
 )
 
-data class ComicSummary(
+data class HeroSummary(
     val resourceURI: String? = null,
     val name: String? = null,
 )
 
-data class ComicDate(
+data class HeroDate(
     val type: String? = null,
     val date: Date? = null,
 )
 
-data class ComicPrice(
+data class HeroPrice(
     val type: String? = null,
     val price: Float? = null,
 )
 
-data class ComicBookImage(
+data class HeroImage(
     val path: String? = null,
     val extension: String? = null,
 )
