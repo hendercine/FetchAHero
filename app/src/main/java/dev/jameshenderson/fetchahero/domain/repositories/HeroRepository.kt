@@ -38,10 +38,10 @@ open class HeroRepository
             }
         }
 
-        override suspend fun getHeroDetails(comicId: Int): Hero {
+        override suspend fun getHeroDetails(heroId: Int): Hero {
             val response =
                 marvelApi.marvelService.getHeroDetails(
-                    comicId,
+                    heroId,
                     timestamp = timestamp,
                     hash = hash,
                     publicKey = publicKey,
