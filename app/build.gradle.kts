@@ -1,5 +1,6 @@
 import org.jmailen.gradle.kotlinter.tasks.FormatTask
 import org.jmailen.gradle.kotlinter.tasks.LintTask
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -25,6 +26,26 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        //load the values from .properties file
+        val keystoreFile = project.rootProject.file("api_keys.properties")
+        val properties = Properties()
+        properties.load(keystoreFile.inputStream())
+
+        //return empty key in case something goes wrong
+        val privateApiKey = properties.getProperty("PRIVATE_MARVEL_API_KEY") ?: "empty_key"
+        val publicApiKey = properties.getProperty("PUBLIC_MARVEL_API_KEY") ?: "empty_key"
+
+        buildConfigField(
+            type = "String",
+            name = "PRIVATE_MARVEL_API_KEY",
+            value = "\"${privateApiKey}\""
+        )
+
+        buildConfigField(
+            type = "String",
+            name = "PUBLIC_MARVEL_API_KEY",
+            value = "\"${publicApiKey}\""
+        )
     }
 
     buildTypes {
@@ -45,6 +66,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
