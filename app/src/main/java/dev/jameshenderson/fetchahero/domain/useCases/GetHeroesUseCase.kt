@@ -6,15 +6,16 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class GetHeroesUseCase @Inject constructor(
-    private val heroRepository: HeroRepositoryInterface
-) : UseCase<Unit, Result<List<Hero>>> {
-    override suspend operator fun invoke(params: Unit): Result<List<Hero>> {
-        return try {
-            val heroes = heroRepository.getHeroes()
-            Result.success(heroes)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
+class GetHeroesUseCase
+    @Inject
+    constructor(
+        private val heroRepository: HeroRepositoryInterface,
+    ) : UseCase<Unit, Result<List<Hero>>> {
+        override suspend operator fun invoke(params: Unit): Result<List<Hero>> =
+            try {
+                val heroes = heroRepository.getHeroes()
+                Result.success(heroes)
+            } catch (e: Exception) {
+                Result.failure(e)
+            }
     }
-}

@@ -16,7 +16,7 @@ import dev.jameshenderson.fetchahero.ui.heroesList.HeroesListViewModel
 fun HeroNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = "heroes_list"
+        startDestination = "heroes_list",
     ) {
         composable("heroes_list") {
             val viewModel = hiltViewModel<HeroesListViewModel>()
@@ -24,7 +24,7 @@ fun HeroNavigation(navController: NavHostController) {
         }
         composable(
             "hero_detail/{heroId}",
-            arguments = listOf(navArgument("heroId") { type = NavType.IntType })
+            arguments = listOf(navArgument("heroId") { type = NavType.IntType }),
         ) {
             val viewModel = hiltViewModel<HeroDetailViewModel>()
             HeroDetailScreen(viewModel) {
@@ -33,4 +33,3 @@ fun HeroNavigation(navController: NavHostController) {
         }
     }
 }
-

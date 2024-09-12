@@ -20,14 +20,14 @@ fun HeroesListScreen(
 ) {
     val heroes = viewModel.heroesStateFlow.collectAsState()
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Fetch A Hero") }) }
+        topBar = { TopAppBar(title = { Text("Fetch A Hero") }) },
     ) { paddingValues ->
         LazyColumn(modifier = Modifier.padding(paddingValues)) {
             items(heroes.value.size) { index ->
                 val hero = heroes.value[index]
                 HeroUIComponent(hero) {
                     navController.navigate(
-                        "hero_detail/${hero.id}"
+                        "hero_detail/${hero.id}",
                     )
                 }
             }

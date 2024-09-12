@@ -5,7 +5,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.jameshenderson.fetchahero.data.api.MarvelApi
-import dev.jameshenderson.fetchahero.data.services.MarvelService
 import dev.jameshenderson.fetchahero.domain.repositories.HeroRepository
 import dev.jameshenderson.fetchahero.domain.repositories.HeroRepositoryInterface
 import dev.jameshenderson.fetchahero.utils.BuildConfigUtil
@@ -14,8 +13,8 @@ import dev.jameshenderson.fetchahero.utils.BuildConfigUtil
 @InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
-    fun provideHeroRepository(marvelApi: MarvelApi, buildConfigUtil: BuildConfigUtil): HeroRepositoryInterface {
-        return HeroRepository(marvelApi, buildConfigUtil)
-    }
-
+    fun provideHeroRepository(
+        marvelApi: MarvelApi,
+        buildConfigUtil: BuildConfigUtil,
+    ): HeroRepositoryInterface = HeroRepository(marvelApi, buildConfigUtil)
 }

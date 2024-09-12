@@ -24,58 +24,67 @@ import dev.jameshenderson.fetchahero.R
 import dev.jameshenderson.fetchahero.data.models.Hero
 
 @Composable
-fun HeroUIComponent(hero: Hero, onHeroClick: () -> Unit) {
+fun HeroUIComponent(
+    hero: Hero,
+    onHeroClick: () -> Unit,
+) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onHeroClick)
-            .padding(8.dp),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onHeroClick)
+                .padding(8.dp),
     ) {
         Row(
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             val imageUrl = "${hero.thumbnail?.path}.${hero.thumbnail?.extension}".replace("http", "https")
             println("_______________ imageUrl is: $imageUrl")
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             ) {
                 AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(imageUrl)
-                        .crossfade(true)
-                        .build(),
+                    model =
+                        ImageRequest
+                            .Builder(LocalContext.current)
+                            .data(imageUrl)
+                            .crossfade(true)
+                            .build(),
                     contentDescription = "Hero Cover Thumbnail",
                     placeholder = painterResource(id = R.drawable.no_image_2x),
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(RoundedCornerShape(4.dp))
+                    modifier =
+                        Modifier
+                            .size(100.dp)
+                            .clip(RoundedCornerShape(4.dp)),
                 )
             }
             Column(
-                modifier = Modifier.weight(3f)
+                modifier = Modifier.weight(3f),
             ) {
                 Row(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .align(Alignment.Start)
+                    modifier =
+                        Modifier
+                            .padding(4.dp)
+                            .align(Alignment.Start),
                 ) {
                     Text(
                         text = hero.title ?: "Unknown Title",
                         style = MaterialTheme.typography.titleMedium,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
                 Row(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .align(Alignment.Start)
+                    modifier =
+                        Modifier
+                            .padding(4.dp)
+                            .align(Alignment.Start),
                 ) {
                     Text(
                         text = hero.description ?: "No Description found",
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 3,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }

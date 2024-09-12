@@ -28,7 +28,7 @@ import coil.request.ImageRequest
 @Composable
 fun HeroDetailScreen(
     viewModel: HeroDetailViewModel,
-    navigateBack: () -> Unit = {}
+    navigateBack: () -> Unit = {},
 ) {
     val hero = viewModel.heroStateFlow.collectAsState()
 
@@ -39,47 +39,52 @@ fun HeroDetailScreen(
                     Text(
                         text = hero.value?.title ?: "Hero Details",
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigateBack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Localized description"
+                            contentDescription = "Localized description",
                         )
                     }
-                }
+                },
             )
-        }
+        },
     ) { paddingValues ->
         Box(
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier.padding(paddingValues),
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 if (hero.value != null) {
                     Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 8.dp)
-                            .align(Alignment.CenterHorizontally)
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 8.dp)
+                                .align(Alignment.CenterHorizontally),
                     ) {
-                        val imageUrl = "${hero.value!!.thumbnail?.path}.${hero.value!!
-                            .thumbnail?.extension}".replace("http", "https")
+                        val imageUrl =
+                            "${hero.value!!.thumbnail?.path}.${hero.value!!
+                                .thumbnail?.extension}".replace("http", "https")
                         AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(imageUrl)
-                                .crossfade(true)
-                                .build(),
+                            model =
+                                ImageRequest
+                                    .Builder(LocalContext.current)
+                                    .data(imageUrl)
+                                    .crossfade(true)
+                                    .build(),
                             contentDescription = "Hero Cover Thumbnail",
-                            modifier = Modifier
-                                .padding(end = 8.dp)
+                            modifier =
+                                Modifier
+                                    .padding(end = 8.dp),
                         )
                     }
                     Row {
                         Text(
                             text = hero.value!!.description ?: "Description not found",
-                            style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.bodyMedium,
                         )
                     }
 
@@ -87,11 +92,11 @@ fun HeroDetailScreen(
                         Row {
                             Text(
                                 text = "${it.role}: ",
-                                style = MaterialTheme.typography.bodyMedium
+                                style = MaterialTheme.typography.bodyMedium,
                             )
                             Text(
                                 text = "${it.name}",
-                                style = MaterialTheme.typography.bodyMedium
+                                style = MaterialTheme.typography.bodyMedium,
                             )
                         }
                     }
