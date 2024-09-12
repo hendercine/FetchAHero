@@ -7,10 +7,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Date
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class MarvelApi
-    @Inject
-    constructor() {
+@Singleton
+class MarvelApi @Inject constructor() {
         private val gson =
             GsonBuilder()
                 .registerTypeAdapter(Date::class.java, DateDeserializer)
