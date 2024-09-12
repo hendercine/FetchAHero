@@ -11,8 +11,8 @@ class GetHeroesUseCase @Inject constructor(
 ) : UseCase<Unit, Result<List<Hero>>> {
     override suspend operator fun invoke(params: Unit): Result<List<Hero>> {
         return try {
-            val comicBooks = heroRepository.getHeroes()
-            Result.success(comicBooks)
+            val heroes = heroRepository.getHeroes()
+            Result.success(heroes)
         } catch (e: Exception) {
             Result.failure(e)
         }

@@ -9,7 +9,7 @@ data class Hero(
     val issueNumber: Double? = null,
     val variantDescription: String? = null,
     val description: String? = null,
-    val modified: HeroDate? = null,
+    val modified: Date? = null,
     val isbn: String? = null,
     val upc: String? = null,
     val diamondCode: String? = null,

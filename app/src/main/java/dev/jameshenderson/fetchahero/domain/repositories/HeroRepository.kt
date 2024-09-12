@@ -29,7 +29,7 @@ open class HeroRepository @Inject constructor(
             )
             response.data.results
         } catch (e: Exception) {
-            println("Error fetching comic books: ${e.message}")
+            println("Error fetching heroes: ${e.message}")
             e.printStackTrace()
             emptyList()
         }
