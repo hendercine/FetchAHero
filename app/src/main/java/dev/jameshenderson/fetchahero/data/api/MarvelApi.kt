@@ -10,7 +10,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MarvelApi @Inject constructor() {
+class MarvelApi
+    @Inject
+    constructor() {
         private val gson =
             GsonBuilder()
                 .registerTypeAdapter(Date::class.java, DateDeserializer)
