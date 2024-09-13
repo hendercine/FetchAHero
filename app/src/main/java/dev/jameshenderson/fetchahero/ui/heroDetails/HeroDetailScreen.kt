@@ -20,9 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.SavedStateHandle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import dev.jameshenderson.fetchahero.data.previewAndTest.FakeHeroRepository
+import dev.jameshenderson.fetchahero.domain.useCases.GetHeroDetailsUseCase
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -106,4 +110,17 @@ fun HeroDetailScreen(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HeroDetailScreenPreview() {
+    HeroDetailScreen(
+        viewModel = HeroDetailViewModel(
+            getHeroDetailsUseCase = GetHeroDetailsUseCase(FakeHeroRepository()),
+            savedStateHandle = SavedStateHandle().apply {
+                set("heroId", 1)
+            }
+        ),
+    )
 }
