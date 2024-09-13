@@ -9,8 +9,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
+import dev.jameshenderson.fetchahero.data.previewAndTest.FakeHeroRepository
+import dev.jameshenderson.fetchahero.domain.useCases.GetHeroesUseCase
 import dev.jameshenderson.fetchahero.ui.components.HeroUIComponent
+import dev.jameshenderson.fetchahero.ui.heroDetails.HeroDetailScreen
+import dev.jameshenderson.fetchahero.ui.heroDetails.HeroDetailViewModel
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,4 +40,15 @@ fun HeroesListScreen(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun HeroesListScreenPreview() {
+    HeroesListScreen(
+        viewModel = HeroesListViewModel(
+            getHeroesUseCase = GetHeroesUseCase(FakeHeroRepository()),
+        ),
+        navController = NavController(LocalContext.current)
+    )
 }
